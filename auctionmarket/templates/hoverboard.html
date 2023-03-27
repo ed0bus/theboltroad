@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .container {
+
+        position: relative;
+        bottom: -30px;
+        width: 900px;
+        height: 600px;
+        border: 2px black solid;
+        border-radius: 8px;
+        overflow-y: auto;
+    }
+
+
+    .table {
+        position: relative;
+        width: 450px;
+        height: 100px;
+        left: 350px;
+        bottom: -10%;
+
+    }
+
+    .picture {
+        position: relative;
+        top: -30%;
+
+
+    }
+
+    .text {
+        position: relative;
+        width: 820px;
+        top: -27%;
+        height: 245px;
+
+        padding: 30px;
+    }
+
+    h3 {
+        position: relative;
+        right: -30px;
+        margin-top: 20px;
+    }
+</style>
+
+
+<div class="container">
+    <h3>{{ hoverboard.model_name }}</h3>
+    <table class="table table-sm table-bordered table-hover">
+
+
+        <tr>
+
+            <th scope="row">Wheel Size</th>
+            <td>{{ hoverboard.wheel_size }}</td>
+
+        </tr>
+
+        <tr>
+
+            <th scope="row">Battery Capacity (W/h)</th>
+            <td>{{ hoverboard.battery_capacity }}</td>
+            </thead>
+        </tr>
+        <tr>
+
+            <th scope="row">Motor Power (W)</th>
+            <td>{{ hoverboard.motor_power }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Maximum Speed (Km/h)</th>
+            <td>{{ hoverboard.maximum_speed_kmh }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Max Distance (Km)</th>
+            <td>{{ hoverboard.max_distance_km }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Weight (Kg)</th>
+            <td>{{ hoverboard.weight }}</td>
+
+        </tr>
+    </table>
+    <img class="picture" src="{{ hoverboard.vehicle_pic.url }}" width="300" height="225" />
+    <div class="text">{{hoverboard.description}}</div>
+</div>
+{% endblock %}

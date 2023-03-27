@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .container {
+
+        position: relative;
+        bottom: -30px;
+        width: 900px;
+        height: 600px;
+        border: 2px black solid;
+        border-radius: 8px;
+        overflow-y: auto;
+    }
+
+
+    .table {
+        position: relative;
+        width: 450px;
+        height: 100px;
+        left: 350px;
+        bottom: -0.5%;
+
+    }
+
+    .picture {
+        position: relative;
+        top: -35%;
+
+
+    }
+
+    .text {
+        position: relative;
+        width: 820px;
+        top: -30%;
+        height: 245px;
+
+        padding: 30px;
+    }
+
+    h3 {
+        position: relative;
+        margin-top: 10px;
+    }
+</style>
+
+
+<div class="container">
+    <h3>{{ skateboard.model_name }}</h3>
+    <table class="table table-sm table-bordered table-hover">
+        <tr>
+
+            <th scope="row">Deck Material</th>
+            <td>{{ skateboard.deck_material }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Deck Lenght</th>
+            <td>{{ skateboard.deck_length }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Truck Type</th>
+            <td>{{ skateboard.truck_type }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Wheel Size</th>
+            <td>{{ skateboard.wheel_size }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Wheel Hardness</th>
+            <td>{{ skateboard.wheel_hardness }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Battery Capacity (W/h)</th>
+            <td>{{ skateboard.battery_capacity }}</td>
+            </thead>
+        </tr>
+        <tr>
+
+            <th scope="row">Motor Power (W)</th>
+            <td>{{ skateboard.motor_power }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Maximum Speed (Km/h)</th>
+            <td>{{ skateboard.maximum_speed_kmh }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Max Distance (Km)</th>
+            <td>{{ skateboard.max_distance_km }}</td>
+
+        </tr>
+        <tr>
+
+            <th scope="row">Weight (Kg)</th>
+            <td>{{ skateboard.weight }}</td>
+
+        </tr>
+    </table>
+    <img class="picture" src="{{ skateboard.vehicle_pic.url }}" width="300" height="225" />
+    <div class="text">{{skateboard.description}}</div>
+</div>
+{% endblock %}

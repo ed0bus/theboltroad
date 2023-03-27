@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    h5 {
+        position: relative;
+        margin: 20px;
+    }
+
+    .container {
+
+        position: relative;
+        bottom: -20px;
+        margin-bottom: 30px;
+    }
+
+    .table-bordered.custom-border {
+        border: 2px solid black;
+    }
+
+
+
+    .balance {
+        position: relative;
+        margin-top: 30px;
+        right: -400px;
+    }
+</style>
+
+{% if user.is_superuser %}
+<h5>Since you are an admin, you can directly login in the admin page to access the database and create new auctions!
+</h5>
+{% elif user.is_authenticated %}
+{% if won_auctions %}
+
+<div class="balance">
+    <h2>Your current balance: {{customer.balance}} USD</h2>
+</div>
+
+{% for auction in won_auctions %}
+<div class="container">
+
+    <table class="table table-bordered custom-border table-sm table-hover">
+        <tr">
+            <th scope="row" class="table-primary">Auction ID
+            </th>
+            <td>{{auction.auction.pk}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="table-primary">
+                    Your Offer
+                </th>
+                <td>{{auction.highest_bid}} USD</td>
+            </tr>
+            <tr>
+                <th scope="row" class="table-primary">
+                    Vehicle
+                </th>
+                {% if auction.auction.bicycle %}
+                <td>{{auction.auction.bicycle}}</td>
+                {% elif auction.auction.scooter %}
+                <td>{{auction.auction.scooter}}</td>
+                {% elif auction.auction.skateboard %}
+                <td>{{auction.auction.skateboard}}</td>
+                {% elif auction.auction.hoverboard %}
+                <td>{{auction.auction.hoverboard}}</td>
+
+                {% endif %}
+            </tr>
+            <tr>
+                <th scope="row" class="table-primary">JSON File</th>
+                <td><a href="{{auction.json_downloadable.url}}" download>Download JSON</a></td>
+            </tr>
+            <tr>
+                <th scope="row" class="table-primary">Hashed Json</th>
+                <td>{{auction.hashed_json}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="table-primary">
+                    Proof of Ownership
+                </th>
+                <td><a href="https://goerli.etherscan.io/tx/{{auction.tx_id}}" target="_blank">{{auction.tx_id}}</a>
+                </td>
+            </tr>
+
+
+
+
+
+
+
+
+    </table>
+
+</div>
+{% endfor %}
+{% else %}
+<div class="balance">
+    <h2>Your current balance: {{customer.balance}} USD</h2>
+</div>
+<h5> You have not won any auctions yet! </h5>
+{% endif %}
+{% else %}
+<h5> You have to login first to access this page! </h5>
+{% endif %}
+{% endblock %}

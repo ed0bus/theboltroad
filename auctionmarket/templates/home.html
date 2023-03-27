@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<style>
+    .title {
+        position: relative;
+        right: -30%;
+
+        width: 600px;
+
+    }
+
+    .container {
+
+        height: 1000px;
+        margin: 70px;
+
+    }
+
+    .input-group.input-group-lg {
+        position: relative;
+
+        width: 30%;
+        right: -30%;
+        margin: 60px;
+
+    }
+
+    .form-control {
+        position: relative;
+        width: 100px;
+
+    }
+
+    img {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        top: -5px;
+    }
+
+    p {
+        position: relative;
+        border: 2px black solid;
+        margin: 20px;
+        border-radius: 4px;
+        padding: 15px;
+
+    }
+</style>
+
+<div class='container'>
+    <h1 class="title">Welcome to the Bolt Road <img
+            src="https://cdn.pixabay.com/photo/2017/09/13/22/57/lightning-2747390_960_720.png" alt=""></h1>
+    <p>Welcome to our micromobility startup's web application where you can
+        bid on
+        high-quality electric bicycles,
+        skateboards, hoverboards, and scooters in a fun and exciting auction format. What's unique about our platform is
+        that all the proceeds from the auctions go directly to charity.</p>
+    <div class="input-group input-group-lg ">
+        <span class="input-group-text bg-primary bg-gradient text-white" id="inputGroup-sizing-lg">Total amount
+            collected</span>
+        {% if total %}
+        <input type="text" class="form-control" aria-label="Sizing example input" value="{{total}} USD"
+            aria-describedby="inputGroup-sizing-lg" readonly>
+        {% else %}
+        <input type="text" class="form-control" aria-label="Sizing example input" value="{{total}} USD"
+            aria-describedby="inputGroup-sizing-lg" readonly>
+        {% endif %}
+
+    </div>
+    <p>Our goal is to make a positive impact on the world by not only
+        providing
+        eco-friendly transportation options but
+        also by supporting charitable causes that help those in need. By participating in our auctions, you not only
+        have the opportunity to purchase top-of-the-line electric micromobility devices, but you also contribute to
+        making a difference in the world. <br><br>
+
+        We believe that everyone should have access to eco-friendly transportation options and that we can all make a
+        positive impact on the world. That's why we're proud to offer a fun and engaging way to support charitable
+        causes while also acquiring the latest electric micromobility devices on the market.
+        <br> <br>
+        In addition to our commitment to supporting charitable causes, we also value the security
+        and transparency of our auction process. That's why we utilize the Ethereum Goerli blockchain to save auction
+        outcomes, ensuring that the ownership of the micromobility devices you purchase is fully documented and
+        verified. By using this technology, we can guarantee that you are the true owner of your new eco-friendly ride
+        and that your purchase is backed by a secure and decentralized system. Join us in our efforts to make a positive
+        impact on the world, while also enjoying the benefits of cutting-edge technology and eco-friendly transportation
+        options.
+        <strong>
+            <br><br>
+            To ensure a fair and transparent bidding process, we have established the following rules:
+            <br><br>
+            - You can bid any amount you want, as long as it is greater than the minimum bid set by us and the current
+            highest bid. This allows you to make competitive bids for the micromobility devices you want.
+            <br><br>
+            - You can withdraw your bid at any time if you change your mind. However, please note that the withdrawal
+            of a
+            bid does not revive the previous one. Instead, the auction will continue with the next highest bidder,
+            so
+            make sure you are committed to your bid before placing it.
+            <br><br>
+            - Once the auction has ended, the micromobility device will be removed from the auction market, and the
+            outcome will be recorded in the Ethereum Goerli blockchain. This ensures the validity and transparency
+            of
+            the auction process. You can verify the auction outcome directly by clicking on the tx ID provided in your
+            profile page.</strong>
+        <br> <br>
+
+
+        We want to provide a fun and engaging way to support charitable causes while acquiring the latest electric
+        micromobility devices on the market. Our goal is to make the world a better place, one ride at a time. Thank
+        you for joining us in our mission, and happy bidding!
+    </p>
+
+
+
+</div>
+
+{% endblock %}

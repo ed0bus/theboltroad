@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container {
+
+        position: relative;
+        margin-top: 2%;
+        background-color: white;
+        height: 700px;
+
+
+    }
+
+    .container .mb-3 {
+        position: relative;
+
+
+
+    }
+
+    .container .card.border-dark.mb-3 .signup-form {
+
+        position: relative;
+        width: 240px;
+        left: 55px;
+        height: 500px;
+        bottom: -40px;
+
+
+    }
+
+
+
+
+
+    .container .signup-form .form h2 {
+        position: relative;
+        bottom: 50px;
+    }
+
+    .container .card.border-dark.mb-3 {
+        position: relative;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 500px;
+        width: 350px;
+
+
+    }
+
+    .hint-text {
+        position: relative;
+
+        width: 200px;
+        left: 480px;
+
+        bottom: -20px;
+    }
+
+    .signup-form .btn-lg {
+        position: relative;
+        font-size: 15px;
+        padding: 10px 20px;
+
+        right: -65px;
+        margin-top: 5px;
+    }
+
+    .signup-form .alert-danger {
+        border: 2px black dotted;
+        font-size: 12px;
+
+
+
+    }
+
+
+
+
+    h2 {
+        position: relative;
+        top: -30px;
+        text-align: center;
+        left: -10px;
+    }
+</style>
+
+
+
+
+
+<body>
+    {% if user.is_authenticated %}
+
+    <div class="container">
+        <div class="alert alert-info my-5">
+            <h3 class="text-center mb-0">You have to log out to access to the signup page!! Click here to <a
+                    href="{% url 'signup' %}">logout!</a></h3>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="container">
+        <div class="card border-dark mb-3">
+            <div class="signup-form">
+                <h2>Sign Up</h2>
+                <p>Please fill in this form to create an account!</p>
+
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                        {{field.label_tag}}
+                        {{field}}
+                    </div>
+
+                    {% for error in field.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{error}}
+                    </div>
+
+                    {% endfor %}
+                    {% endfor %}
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                    </div>
+
+            </div>
+
+
+        </div>
+        <div class="hint-text">Already have an account? <a href="#">Login here</a></div>
+
+    </div>
+
+
+
+
+
+    {% endif %}
+
+</body>
+
+
+
+
+{% endblock %}

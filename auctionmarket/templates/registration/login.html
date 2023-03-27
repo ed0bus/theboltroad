@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .box {
+        position: relative;
+        margin-top: 2%;
+        background-color: white;
+        height: 700px;
+
+
+    }
+
+    .box .mb-3 {
+        position: relative;
+
+
+
+    }
+
+    .box .card.border-dark.mb-3 .signup-form {
+
+        position: relative;
+        width: 240px;
+        left: 55px;
+        height: 500px;
+        bottom: -70px;
+
+
+    }
+
+    .box .signup-form .form h2 {
+        position: relative;
+        bottom: 50px;
+    }
+
+    .box .card.border-dark.mb-3 {
+        position: relative;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 450px;
+        width: 350px;
+
+
+    }
+
+    .hint-text {
+        position: relative;
+
+        width: 200px;
+        left: 480px;
+
+        bottom: -20px;
+    }
+
+    .signup-form .btn-lg {
+        position: relative;
+        font-size: 15px;
+        padding: 10px 20px;
+        right: -65px;
+        margin-top: 5px;
+    }
+
+    .alert-danger {
+        border: 2px black dotted;
+        font-size: 12px;
+        position: relative;
+        width: 50%;
+        left: 25%;
+        bottom: -70px;
+        margin-bottom: 30px;
+    }
+
+    p {
+        position: relative;
+        margin-left: 10px;
+        margin-top: 30px;
+    }
+
+
+
+
+    h2 {
+        position: relative;
+        top: -30px;
+        text-align: center;
+        left: -10px;
+    }
+
+
+
+    .advice {
+        text-align: center;
+        margin-top: 50px;
+        color: #007bff;
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+</style>
+
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="alert alert-info my-5">
+        <h3 class="text-center mb-0">You're already logged in as {{ user.username }}! Click here to <a
+                href="{% url 'logout' %}">logout!</a></h3>
+    </div>
+</div>
+
+{% else %}
+
+
+
+<div class="box">
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        Your username and password didn't match. Please try again.
+    </div>
+    {% endif %}
+    <div class="card border-dark mb-3">
+        <div class="signup-form">
+            <h2>Login</h2>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="mb-3">
+                    {{field.label_tag}}
+                    {{field}}
+                </div>
+
+                {% endfor %}
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary btn-lg" value="login">Sign Up</button>
+                    <input type="hidden" name="next" value="{{ next }}">
+                </div>
+        </div>
+        {# Assumes you set up the password_reset view in your URLconf #}
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

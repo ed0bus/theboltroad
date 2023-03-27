@@ -1,0 +1,28 @@
+<table class='table  table-striped  table-bordered table-hover'>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Certificate Identification Code</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for certificate in certificates %}
+    <tr>
+        <td>{{certificate.id}}</td>
+        <td>{{ certificate.name}}</td>
+        <td>{{certificate.surname}}</td>
+        <td>{{certificate.hash}}</td>
+        <td>
+            <button onclick="copyText(this)">Copy</button>
+        </td>
+
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
